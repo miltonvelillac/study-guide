@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Situacionales · Fullstack Engineer Study Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <a class="page-home" href="../index.html">← Todas las secciones</a>
+    <header class="hero">
+      <div>
+        <div class="kicker">Preparación entrevista técnica</div>
+        <h1>Situacionales</h1>
+        <p>7 preguntas para practicar. Responde en voz alta antes de abrir cada respuesta.</p>
+      </div>
+      <aside class="progress-box">
+        <strong>8 / 8</strong>
+        <span>Sección actual</span>
+        <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+      </aside>
+    </header>
+    <nav class="stepper" aria-label="Secciones de estudio">
+    <a class="step" href="../typescript/index.html">
+      <span class="step-index">1</span>
+      <span class="step-icon">TS</span>
+      <span class="step-label">TypeScript</span>
+    </a>
+    <a class="step" href="../node/index.html">
+      <span class="step-index">2</span>
+      <span class="step-icon">JS</span>
+      <span class="step-label">Node.js</span>
+    </a>
+    <a class="step" href="../react/index.html">
+      <span class="step-index">3</span>
+      <span class="step-icon">⚛</span>
+      <span class="step-label">React 18+</span>
+    </a>
+    <a class="step" href="../aws-serverless/index.html">
+      <span class="step-index">4</span>
+      <span class="step-icon">AWS</span>
+      <span class="step-label">AWS Serverless</span>
+    </a>
+    <a class="step" href="../arquitectura/index.html">
+      <span class="step-index">5</span>
+      <span class="step-icon">◎</span>
+      <span class="step-label">Arquitectura</span>
+    </a>
+    <a class="step" href="../ia-y-agentes/index.html">
+      <span class="step-index">6</span>
+      <span class="step-icon">AI</span>
+      <span class="step-label">IA y Agentes</span>
+    </a>
+    <a class="step" href="../testing-y-seguridad/index.html">
+      <span class="step-index">7</span>
+      <span class="step-icon">✓</span>
+      <span class="step-label">Testing y Seguridad</span>
+    </a>
+    <a class="step active" href="../situacionales/index.html" aria-current="page">
+      <span class="step-index">8</span>
+      <span class="step-icon">★</span>
+      <span class="step-label">Situacionales</span>
+    </a></nav>
+    <div class="main-card">
+      <section class="step-panel active" data-panel="7"><div class="section-header"><span class="eyebrow">Sección 8 de 8</span><h2>Situacionales</h2><p>7 preguntas para practicar</p></div><div class="qa-list"><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">73</span><span class="question-text">Un endpoint tarda ocho segundos. ¿Cómo encontrarías el problema?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Agregaría trazas y mediría cada etapa:</p><pre><code>API Gateway: 50 ms
+Lambda initialization: 500 ms
+DynamoDB: 30 ms
+LLM: 6.5 s
+Serialización: 20 ms</code></pre><p>Después optimizaría la etapa responsable.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">74</span><span class="question-text">Dos usuarios actualizan simultáneamente el mismo registro. ¿Cómo evitarías sobrescrituras?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Usaría control de concurrencia optimista con un campo <code>version</code>.</p><p>La actualización solo se acepta si la versión esperada coincide con la almacenada. En DynamoDB se implementa con una expresión condicional.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">75</span><span class="question-text">Una tarea SQS falla repetidamente. ¿Cómo evitarías que bloquee el sistema?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Configuraría número máximo de reintentos, visibility timeout, dead-letter queue, alarmas, registro de la causa, reprocesamiento e idempotencia.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">76</span><span class="question-text">Debes migrar un monolito a serverless. ¿Lo reescribirías completamente?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>No automáticamente. Haría una migración incremental: identificar módulos, extraer procesos asíncronos, agregar APIs o eventos, migrar funcionalidades de bajo riesgo y medir resultados.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">77</span><span class="question-text">Los fundadores quieren lanzar algo en dos días, pero hay riesgos técnicos. ¿Qué harías?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Explicaría los riesgos en términos de impacto comercial y propondría una versión reducida y segura con feature flag, acceso limitado, métricas, rollback y deuda técnica documentada.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">78</span><span class="question-text">Cuéntame una decisión arquitectónica importante.</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Usaría el formato STAR: situación, tarea, acción y resultado.</p><p>Ejemplo: en un proyecto logístico creado desde cero, propuse una arquitectura modular, componentes reutilizables y separación entre presentación y negocio. Esto redujo duplicación y facilitó agregar nuevas funcionalidades.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">79</span><span class="question-text">¿Qué harías durante tus primeros 30 días?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Primera semana: entender producto, usuarios, arquitectura e incidentes.</p><p>Segunda semana: resolver problemas de alto impacto y mejorar observabilidad.</p><p>Semanas 3 y 4: proponer roadmap, estándares de pruebas, diseño de agentes, métricas y entregar una mejora visible en producción.</p></div></div></article></div></section>
+    </div>
+    <div class="controls">
+      <a class="nav-btn" href="../testing-y-seguridad/index.html">← Testing y Seguridad</a>
+      <a class="nav-btn primary" href="../index.html">Completado ✓</a>
+    </div>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>

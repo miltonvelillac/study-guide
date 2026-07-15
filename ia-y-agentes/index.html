@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IA y Agentes · Fullstack Engineer Study Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <a class="page-home" href="../index.html">← Todas las secciones</a>
+    <header class="hero">
+      <div>
+        <div class="kicker">Preparación entrevista técnica</div>
+        <h1>IA y Agentes</h1>
+        <p>11 preguntas para practicar. Responde en voz alta antes de abrir cada respuesta.</p>
+      </div>
+      <aside class="progress-box">
+        <strong>6 / 8</strong>
+        <span>Sección actual</span>
+        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+      </aside>
+    </header>
+    <nav class="stepper" aria-label="Secciones de estudio">
+    <a class="step" href="../typescript/index.html">
+      <span class="step-index">1</span>
+      <span class="step-icon">TS</span>
+      <span class="step-label">TypeScript</span>
+    </a>
+    <a class="step" href="../node/index.html">
+      <span class="step-index">2</span>
+      <span class="step-icon">JS</span>
+      <span class="step-label">Node.js</span>
+    </a>
+    <a class="step" href="../react/index.html">
+      <span class="step-index">3</span>
+      <span class="step-icon">⚛</span>
+      <span class="step-label">React 18+</span>
+    </a>
+    <a class="step" href="../aws-serverless/index.html">
+      <span class="step-index">4</span>
+      <span class="step-icon">AWS</span>
+      <span class="step-label">AWS Serverless</span>
+    </a>
+    <a class="step" href="../arquitectura/index.html">
+      <span class="step-index">5</span>
+      <span class="step-icon">◎</span>
+      <span class="step-label">Arquitectura</span>
+    </a>
+    <a class="step active" href="../ia-y-agentes/index.html" aria-current="page">
+      <span class="step-index">6</span>
+      <span class="step-icon">AI</span>
+      <span class="step-label">IA y Agentes</span>
+    </a>
+    <a class="step" href="../testing-y-seguridad/index.html">
+      <span class="step-index">7</span>
+      <span class="step-icon">✓</span>
+      <span class="step-label">Testing y Seguridad</span>
+    </a>
+    <a class="step" href="../situacionales/index.html">
+      <span class="step-index">8</span>
+      <span class="step-icon">★</span>
+      <span class="step-label">Situacionales</span>
+    </a></nav>
+    <div class="main-card">
+      <section class="step-panel active" data-panel="5"><div class="section-header"><span class="eyebrow">Sección 6 de 8</span><h2>IA y Agentes</h2><p>11 preguntas para practicar</p></div><div class="qa-list"><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">56</span><span class="question-text">¿Cuál es la diferencia entre integrar directamente un LLM y construir un agente?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Una integración directa envía un prompt y obtiene una respuesta.</p><p>Un agente puede mantener estado, decidir el siguiente paso, usar herramientas, consultar información, repetir procesos y validar resultados. No todo problema necesita un agente.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">57</span><span class="question-text">¿Qué componentes principales tiene un agente de IA?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Modelo, prompt, estado, memoria, herramientas, reglas de control, recuperación de información, validación, observabilidad y límites de ejecución.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">58</span><span class="question-text">¿Qué diferencia existe entre un workflow determinista y un agente autónomo?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Un workflow define los pasos previamente:</p><pre><code>Extraer datos → Clasificar → Generar reporte → Validar</code></pre><p>Un agente decide dinámicamente qué herramienta o acción ejecutar. Para procesos sensibles suele ser mejor un workflow controlado.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">59</span><span class="question-text">¿Qué es RAG y cuándo lo utilizarías?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>RAG combina recuperación de documentos con generación.</p><pre><code>Pregunta ↓
+Buscar fragmentos relevantes ↓
+Enviar contexto al modelo ↓
+Generar respuesta con evidencia</code></pre><p>Lo usaría para consultar metodologías, políticas, perfiles y conocimiento institucional sin reentrenar el modelo.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">60</span><span class="question-text">¿Cómo reducirías las alucinaciones?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Con RAG, fuentes confiables, respuestas estructuradas, temperatura baja, validaciones, instrucciones claras, citas, límites, revisión humana y evaluaciones automatizadas.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">61</span><span class="question-text">¿Cómo protegerías una aplicación frente a prompt injection?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Tratar documentos como datos, separar instrucciones y contenido, limitar herramientas, validar argumentos, aplicar permisos, no exponer secretos, filtrar salidas y exigir confirmación humana para acciones sensibles.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">62</span><span class="question-text">¿Cómo controlarías costos y latencia al usar LLMs?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Modelos pequeños para tareas simples, modelos grandes solo cuando aportan valor, caché, resúmenes, límites de tokens, procesamiento asíncrono, paralelización controlada, streaming y monitoreo de costo por operación.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">63</span><span class="question-text">¿Qué información guardarías de cada ejecución de un agente?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Versión del modelo, versión del prompt, herramientas, entradas y salidas permitidas, tokens, costo, latencia, errores, decisiones estructuradas, validación, usuario, organización e ID de ejecución.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">64</span><span class="question-text">¿Qué ventajas ofrece LangGraph?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Permite representar el agente como un grafo de estados con flujos explícitos, persistencia, condiciones, ciclos, reintentos, aprobación humana, observabilidad y mayor control.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">65</span><span class="question-text">¿Cómo evaluarías si las respuestas son correctas?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Crearía casos representativos y mediría exactitud, fidelidad, completitud, formato, seguridad, sesgo, costo y latencia.</p><p>Combinaría reglas automáticas, respuestas esperadas, evaluación humana, LLM-as-judge con precaución y pruebas de regresión.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">66</span><span class="question-text">¿Permitirías que un agente tome decisiones automáticas de contratación?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>No como decisión final. El sistema debería organizar evidencia, generar scorecards, detectar inconsistencias, explicar recomendaciones, mantener trazabilidad y permitir revisión humana.</p></div></div></article></div></section>
+    </div>
+    <div class="controls">
+      <a class="nav-btn" href="../arquitectura/index.html">← Arquitectura</a>
+      <a class="nav-btn primary" href="../testing-y-seguridad/index.html">Testing y Seguridad →</a>
+    </div>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>

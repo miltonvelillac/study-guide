@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testing y Seguridad · Fullstack Engineer Study Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <a class="page-home" href="../index.html">← Todas las secciones</a>
+    <header class="hero">
+      <div>
+        <div class="kicker">Preparación entrevista técnica</div>
+        <h1>Testing y Seguridad</h1>
+        <p>6 preguntas para practicar. Responde en voz alta antes de abrir cada respuesta.</p>
+      </div>
+      <aside class="progress-box">
+        <strong>7 / 8</strong>
+        <span>Sección actual</span>
+        <div class="progress-bar"><div class="progress-fill" style="width: 87.5%"></div></div>
+      </aside>
+    </header>
+    <nav class="stepper" aria-label="Secciones de estudio">
+    <a class="step" href="../typescript/index.html">
+      <span class="step-index">1</span>
+      <span class="step-icon">TS</span>
+      <span class="step-label">TypeScript</span>
+    </a>
+    <a class="step" href="../node/index.html">
+      <span class="step-index">2</span>
+      <span class="step-icon">JS</span>
+      <span class="step-label">Node.js</span>
+    </a>
+    <a class="step" href="../react/index.html">
+      <span class="step-index">3</span>
+      <span class="step-icon">⚛</span>
+      <span class="step-label">React 18+</span>
+    </a>
+    <a class="step" href="../aws-serverless/index.html">
+      <span class="step-index">4</span>
+      <span class="step-icon">AWS</span>
+      <span class="step-label">AWS Serverless</span>
+    </a>
+    <a class="step" href="../arquitectura/index.html">
+      <span class="step-index">5</span>
+      <span class="step-icon">◎</span>
+      <span class="step-label">Arquitectura</span>
+    </a>
+    <a class="step" href="../ia-y-agentes/index.html">
+      <span class="step-index">6</span>
+      <span class="step-icon">AI</span>
+      <span class="step-label">IA y Agentes</span>
+    </a>
+    <a class="step active" href="../testing-y-seguridad/index.html" aria-current="page">
+      <span class="step-index">7</span>
+      <span class="step-icon">✓</span>
+      <span class="step-label">Testing y Seguridad</span>
+    </a>
+    <a class="step" href="../situacionales/index.html">
+      <span class="step-index">8</span>
+      <span class="step-icon">★</span>
+      <span class="step-label">Situacionales</span>
+    </a></nav>
+    <div class="main-card">
+      <section class="step-panel active" data-panel="6"><div class="section-header"><span class="eyebrow">Sección 7 de 8</span><h2>Testing y Seguridad</h2><p>6 preguntas para practicar</p></div><div class="qa-list"><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">67</span><span class="question-text">¿Cuál es la diferencia entre pruebas unitarias, de integración y end-to-end?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Unitarias prueban una unidad aislada. Integración prueba interacción entre componentes. End-to-end prueba el flujo completo.</p><p>Una estrategia sana tiene muchas unitarias, suficientes integraciones y pocas E2E críticas.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">68</span><span class="question-text">¿Qué partes de una Lambda probarías?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Lógica de negocio, validación del evento, autorización, respuestas HTTP, errores, idempotencia, integración con AWS, reintentos, timeouts y casos duplicados.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">69</span><span class="question-text">¿Cómo realizarías un code review efectivo?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Revisaría correctitud, seguridad, claridad, diseño, rendimiento, tests, errores y observabilidad. Los comentarios deben explicar la razón y distinguir cambios obligatorios de sugerencias.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">70</span><span class="question-text">¿Cuáles son las vulnerabilidades más importantes en una API?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Autorización rota, inyección, exposición de datos, rate limiting insuficiente, validación incorrecta, SSRF, CORS incorrecto, archivos maliciosos, secretos en logs, dependencias vulnerables e IAM excesivo.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">71</span><span class="question-text">¿Cómo implementarías autenticación y autorización?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Usaría Cognito u OIDC, tokens de corta duración, roles y permisos, control por organización, validación en cada endpoint y mínimo privilegio.</p><p>No confiaría solo en ocultar opciones desde el frontend.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">72</span><span class="question-text">¿Cómo evitarías exponer información sensible en logs?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>No registraría contraseñas, tokens, cookies, documentos completos ni datos personales innecesarios. Implementaría redaction y una lista explícita de campos permitidos.</p></div></div></article></div></section>
+    </div>
+    <div class="controls">
+      <a class="nav-btn" href="../ia-y-agentes/index.html">← IA y Agentes</a>
+      <a class="nav-btn primary" href="../situacionales/index.html">Situacionales →</a>
+    </div>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>

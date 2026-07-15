@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arquitectura · Fullstack Engineer Study Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <a class="page-home" href="../index.html">← Todas las secciones</a>
+    <header class="hero">
+      <div>
+        <div class="kicker">Preparación entrevista técnica</div>
+        <h1>Arquitectura</h1>
+        <p>8 preguntas para practicar. Responde en voz alta antes de abrir cada respuesta.</p>
+      </div>
+      <aside class="progress-box">
+        <strong>5 / 8</strong>
+        <span>Sección actual</span>
+        <div class="progress-bar"><div class="progress-fill" style="width: 62.5%"></div></div>
+      </aside>
+    </header>
+    <nav class="stepper" aria-label="Secciones de estudio">
+    <a class="step" href="../typescript/index.html">
+      <span class="step-index">1</span>
+      <span class="step-icon">TS</span>
+      <span class="step-label">TypeScript</span>
+    </a>
+    <a class="step" href="../node/index.html">
+      <span class="step-index">2</span>
+      <span class="step-icon">JS</span>
+      <span class="step-label">Node.js</span>
+    </a>
+    <a class="step" href="../react/index.html">
+      <span class="step-index">3</span>
+      <span class="step-icon">⚛</span>
+      <span class="step-label">React 18+</span>
+    </a>
+    <a class="step" href="../aws-serverless/index.html">
+      <span class="step-index">4</span>
+      <span class="step-icon">AWS</span>
+      <span class="step-label">AWS Serverless</span>
+    </a>
+    <a class="step active" href="../arquitectura/index.html" aria-current="page">
+      <span class="step-index">5</span>
+      <span class="step-icon">◎</span>
+      <span class="step-label">Arquitectura</span>
+    </a>
+    <a class="step" href="../ia-y-agentes/index.html">
+      <span class="step-index">6</span>
+      <span class="step-icon">AI</span>
+      <span class="step-label">IA y Agentes</span>
+    </a>
+    <a class="step" href="../testing-y-seguridad/index.html">
+      <span class="step-index">7</span>
+      <span class="step-icon">✓</span>
+      <span class="step-label">Testing y Seguridad</span>
+    </a>
+    <a class="step" href="../situacionales/index.html">
+      <span class="step-index">8</span>
+      <span class="step-icon">★</span>
+      <span class="step-label">Situacionales</span>
+    </a></nav>
+    <div class="main-card">
+      <section class="step-panel active" data-panel="4"><div class="section-header"><span class="eyebrow">Sección 5 de 8</span><h2>Arquitectura</h2><p>8 preguntas para practicar</p></div><div class="qa-list"><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">48</span><span class="question-text">Diseña una plataforma que genere reportes ejecutivos mediante IA.</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Una posible arquitectura:</p><pre><code>React + CloudFront ↓
+API Gateway ↓
+Lambda API ↓
+DynamoDB ↓
+S3 para documentos ↓
+SQS ↓
+Lambda Worker ↓
+Servicio de extracción ↓
+LLM / agente ↓
+Validación ↓
+Reporte almacenado en S3</code></pre><p>El procesamiento largo debe ser asíncrono. La API devuelve un identificador y el frontend consulta el estado o recibe una notificación.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">49</span><span class="question-text">¿Cómo separarías un proceso síncrono de uno asíncrono?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Síncrono para operaciones rápidas que el usuario necesita inmediatamente.</p><p>Asíncrono para generación de reportes, procesamiento de documentos, llamadas largas a IA, correos y procesos con reintentos. La API puede responder <code>202 Accepted</code> con un <code>jobId</code>.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">50</span><span class="question-text">¿Cómo evitarías que una caída de un proveedor externo afecte toda la aplicación?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Implementaría timeouts, reintentos con exponential backoff y jitter, circuit breaker, colas, caché, proveedor alternativo, degradación controlada, alertas y métricas.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">51</span><span class="question-text">¿Qué estrategias usarías para escalar una aplicación serverless?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Funciones sin estado, SQS para absorber picos, concurrencia controlada, DynamoDB con claves distribuidas, CloudFront, caché, procesamiento por lotes, cuotas, DLQ y backpressure.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">52</span><span class="question-text">¿Qué métricas revisarías para encontrar un cuello de botella?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Latencia promedio, p95, p99, throughput, error rate, CPU, memoria, concurrencia, throttling, tiempo de llamadas externas, edad de mensajes SQS, consumo DynamoDB, cache hit ratio y cold starts.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">53</span><span class="question-text">¿Qué diferencia existe entre escalabilidad vertical y horizontal?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Vertical significa aumentar recursos de una máquina. Horizontal significa agregar más instancias o consumidores.</p><p>Las arquitecturas cloud suelen favorecer la escalabilidad horizontal.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">54</span><span class="question-text">¿Cómo implementarías observabilidad en una aplicación distribuida?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Con logs estructurados, métricas, trazas distribuidas, correlation IDs, dashboards, alertas, registro de despliegues y métricas de negocio.</p><pre><code>{ &quot;level&quot;: &quot;error&quot;, &quot;requestId&quot;: &quot;abc-123&quot;, &quot;operation&quot;: &quot;generate-report&quot;, &quot;durationMs&quot;: 4200
+}</code></pre></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">55</span><span class="question-text">¿Cómo manejarías secretos y variables de configuración en AWS?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>AWS Secrets Manager para secretos, Parameter Store para configuración, IAM Roles, KMS, rotación de credenciales y configuración separada por ambiente.</p><p>Nunca guardaría secretos en el repositorio.</p></div></div></article></div></section>
+    </div>
+    <div class="controls">
+      <a class="nav-btn" href="../aws-serverless/index.html">← AWS Serverless</a>
+      <a class="nav-btn primary" href="../ia-y-agentes/index.html">IA y Agentes →</a>
+    </div>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>
