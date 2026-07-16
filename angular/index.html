@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angular · Fullstack Engineer Study Guide</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <a class="page-home" href="../index.html">← Todas las secciones</a>
+    <header class="hero">
+      <div>
+        <div class="kicker">Preparación entrevista técnica</div>
+        <h1>Angular</h1>
+        <p>10 preguntas tipo senior para practicar. Responde en voz alta antes de abrir cada respuesta.</p>
+      </div>
+      <aside class="progress-box">
+        <strong>4 / 9</strong>
+        <span>Sección actual</span>
+        <div class="progress-bar"><div class="progress-fill" style="width: 44.4%"></div></div>
+      </aside>
+    </header>
+    <nav class="stepper" aria-label="Secciones de estudio">
+      <a class="step" href="../typescript/index.html">
+        <span class="step-index">1</span>
+        <span class="step-icon">TS</span>
+        <span class="step-label">TypeScript</span>
+      </a>
+      <a class="step" href="../node/index.html">
+        <span class="step-index">2</span>
+        <span class="step-icon">JS</span>
+        <span class="step-label">Node.js</span>
+      </a>
+      <a class="step" href="../react/index.html">
+        <span class="step-index">3</span>
+        <span class="step-icon">⚛</span>
+        <span class="step-label">React 18+</span>
+      </a>
+      <a class="step active" href="../angular/index.html" aria-current="page">
+        <span class="step-index">4</span>
+        <span class="step-icon">🅰</span>
+        <span class="step-label">Angular</span>
+      </a>
+      <a class="step" href="../aws-serverless/index.html">
+        <span class="step-index">5</span>
+        <span class="step-icon">AWS</span>
+        <span class="step-label">AWS Serverless</span>
+      </a>
+      <a class="step" href="../arquitectura/index.html">
+        <span class="step-index">6</span>
+        <span class="step-icon">◎</span>
+        <span class="step-label">Arquitectura</span>
+      </a>
+      <a class="step" href="../ia-y-agentes/index.html">
+        <span class="step-index">7</span>
+        <span class="step-icon">AI</span>
+        <span class="step-label">IA y Agentes</span>
+      </a>
+      <a class="step" href="../testing-y-seguridad/index.html">
+        <span class="step-index">8</span>
+        <span class="step-icon">✓</span>
+        <span class="step-label">Testing y Seguridad</span>
+      </a>
+      <a class="step" href="../situacionales/index.html">
+        <span class="step-index">9</span>
+        <span class="step-icon">★</span>
+        <span class="step-label">Situacionales</span>
+      </a>
+    </nav>
+
+    <div class="main-card">
+      <section class="step-panel active" data-panel="3">
+        <div class="section-header">
+          <span class="eyebrow">Sección 4 de 9</span>
+          <h2>Angular</h2>
+          <p>20 preguntas tipo senior</p>
+        </div>
+        <div class="qa-list">
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">36</span>
+              <span class="question-text">¿Cuál es la diferencia entre ChangeDetectionStrategy.Default y OnPush?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Default revisa el árbol completo en cada cambio de referencia o evento. OnPush solo revisa cuando cambia la referencia de la entrada o cuando ocurre un evento dentro del componente. Esto mejora rendimiento, pero exige pensar con más cuidado en cómo se actualizan los datos.</p>
+                <pre><code>@Component({
+  selector: 'app-card',
+  template: '{{ user.name }}',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class CardComponent {
+  @Input() user!: User;
+}</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">37</span>
+              <span class="question-text">¿Cómo explicas la inyección de dependencias en Angular y por qué es importante?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Angular usa un inyector jerárquico. Cada servicio puede registrarse en un nivel del árbol de componentes y ser compartido o aislado según el alcance que necesitemos.</p>
+                <pre><code>@Injectable({ providedIn: 'root' })
+export class UserService {}
+
+@Component({ selector: 'app-user', template: '' })
+export class UserComponent {
+  constructor(private userService: UserService) {}
+}</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">38</span>
+              <span class="question-text">¿Qué ventajas aportan los Signals en Angular moderno?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Los Signals hacen el estado más explícito y predecible. Permiten declarar estado reactivo con mejor performance y menos complejidad en escenarios donde el flujo de datos puede volverse difícil de seguir.</p>
+                <pre><code>count = signal(0);
+
+doubleCount = computed(() => this.count() * 2);
+
+effect(() => console.log(this.count()));</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">39</span>
+              <span class="question-text">¿Cómo manejarías la suscripción a Observables para evitar fugas de memoria?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Evitaría suscribirme manualmente cuando sea posible y usaría operadores como <code>takeUntil</code>, <code>asyncPipe</code> o un patrón de limpieza en <code>ngOnDestroy</code>.</p>
+                <pre><code>private destroy$ = new Subject<void>();
+
+ngOnInit() {
+  this.userService.getUser().pipe(takeUntil(this.destroy$)).subscribe();
+}
+
+ngOnDestroy() {
+  this.destroy$.next();
+  this.destroy$.complete();
+}</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">40</span>
+              <span class="question-text">¿Por qué usarías trackBy en un *ngFor?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Porque ayuda a Angular a identificar qué elementos cambiaron, agregaron o eliminaron, reduciendo re-renderizados innecesarios y mejorando el rendimiento en listas grandes.</p>
+                <pre><code><li *ngFor="let item of items; trackBy: trackById">{{ item.name }}</li>
+
+trackById(index: number, item: Item) {
+  return item.id;
+}</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">41</span>
+              <span class="question-text">¿Qué diferencia existe entre guards, resolvers y interceptors en Angular?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Los guards protegen acceso a rutas, los resolvers precargan datos antes de entrar a una vista y los interceptors modifican peticiones y respuestas de forma transversal.</p>
+                <pre><code>const routes: Routes = [{
+  path: 'dashboard',
+  canActivate: [AuthGuard],
+  resolve: { user: UserResolver }
+}];</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">42</span>
+              <span class="question-text">¿Cuándo elegirías NgRx frente a un servicio simple?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>NgRx es útil cuando el estado tiene muchas transiciones, requisitos de trazabilidad, sincronización compleja o se necesita una arquitectura más explícita para equipos grandes.</p>
+                <pre><code>this.store.dispatch(loadUsers());
+this.store.select(selectUsers);</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">43</span>
+              <span class="question-text">¿Qué beneficios aporta el uso de standalone components?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Reducen la cantidad de NgModules, simplifican la composición y hacen más sencillo el onboarding en proyectos modernos. También facilitan el lazy loading y la migración gradual.</p>
+                <pre><code>@Component({
+  selector: 'app-user-card',
+  standalone: true,
+  imports: [CommonModule]
+})
+export class UserCardComponent {}
+</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">44</span>
+              <span class="question-text">¿Cómo abordarías la optimización de rendimiento en una app Angular grande?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Me centraría en detectar cuellos de botella con herramientas de profiling, usar OnPush cuando corresponda, reducir el número de bindings, aplicar lazy loading y ser cuidadoso con la frecuencia de las peticiones y el tamaño de los bundles.</p>
+                <pre><code>{ path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">45</span>
+              <span class="question-text">¿Qué consideraciones tendrías para hacer una app Angular SSR o con hidratación?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>SSR mejora SEO y el tiempo de primer contenido renderizado, pero exige revisar el manejo de APIs del lado del servidor, el estado inicial y los efectos que no deberían ejecutarse en el servidor.</p>
+                <pre><code>provideClientHydration()</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">46</span>
+              <span class="question-text">¿Qué es un HostListener y cuándo lo usarías?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Es un decorador para escuchar eventos del host del componente o directiva. Se usa para encapsular comportamientos de UI sin depender de un DOM externo.</p>
+                <pre><code>@HostListener('click')
+onClick() {
+  console.log('clicked');
+}</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">47</span>
+              <span class="question-text">¿Qué diferencia hay entre ViewChild y ContentChild?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p><code>ViewChild</code> accede a elementos o componentes dentro de la vista del componente actual. <code>ContentChild</code> accede a contenido proyectado desde un componente padre.</p>
+                <pre><code>@ViewChild('inputRef') input!: ElementRef;
+@ContentChild(MyDirective) contentChild!: MyDirective;</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">48</span>
+              <span class="question-text">¿Cómo evitarías código duplicado entre componentes similares?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Normalmente extraería lógica compartida a un componente base, un servicio reutilizable, un custom directive o un composable pattern según el contexto.</p>
+                <pre><code>@Directive({ selector: '[appAutoFocus]' })
+export class AutoFocusDirective {
+  @HostListener('focus') onFocus() {}
+}</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">49</span>
+              <span class="question-text">¿Qué problemas pueden aparecer al usar funciones puras con inputs mutables?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Se pueden generar estados inconsistentes, efectos secundarios difíciles de rastrear y bugs porque Angular asume que el cambio de referencia es la señal más clara de actualización.</p>
+                <pre><code>const users = this.usersService.getUsers();
+this.filteredUsers = users.filter(u => u.active);</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">50</span>
+              <span class="question-text">¿Cómo diseñarías un sistema de formularios escalable en Angular?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Usaría FormBuilder o Reactive Forms para casos complejos, separaría validaciones por dominio, encapsularía lógica en componentes y mantendría los formularios lo más declarativos posible.</p>
+                <pre><code>this.form = this.fb.group({
+  name: ['', Validators.required],
+  email: ['', [Validators.required, Validators.email]]
+});</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">51</span>
+              <span class="question-text">¿Qué importancia tiene el uso de lazy loading en Angular?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Reduce el bundle inicial, mejora el tiempo de carga y permite dividir la app en módulos funcionales que se cargan solo cuando el usuario los necesita.</p>
+                <pre><code>{ path: 'reports', loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule) }</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">52</span>
+              <span class="question-text">¿Qué harías para que una aplicación Angular sea más fácil de mantener en equipos grandes?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Definiría arquitectura por dominio, reglas de naming, convenciones de componentes, tests automatizados y un enfoque claro para estado, routing y servicios compartidos.</p>
+                <pre><code>src/
+  features/
+    users/
+    orders/
+  shared/
+    components/
+    services/
+</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">53</span>
+              <span class="question-text">¿Cómo explicas la diferencia entre un componente y una directiva en Angular?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Un componente tiene plantilla y suele representar una vista. Una directiva añade comportamiento o lógica a un elemento existente sin asumir el rol de vista independiente.</p>
+                <pre><code>@Directive({ selector: '[appHighlight]' })
+export class HighlightDirective {}
+</code></pre>
+              </div>
+            </div>
+          </article>
+
+          <article class="qa-card">
+            <button class="accordion-trigger" aria-expanded="false">
+              <span class="question-number">54</span>
+              <span class="question-text">¿Qué harías para asegurar una buena experiencia en entornos de alto tráfico o con conexiones lentas?</span>
+              <span class="chevron">⌄</span>
+            </button>
+            <div class="accordion-panel">
+              <div class="answer">
+                <p>Aplicaría caching, lazy loading, optimización de assets, manejo inteligente de peticiones, skeletons y estrategias de carga progresiva para que la app se sienta rápida incluso con recursos limitados.</p>
+                <pre><code>loading = signal(true);
+</code></pre>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="controls">
+      <a class="nav-btn" href="../react/index.html">← React</a>
+      <a class="nav-btn primary" href="../aws-serverless/index.html">AWS Serverless →</a>
+    </div>
+  </main>
+  <script src="../script.js"></script>
+</body>
+</html>
