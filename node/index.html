@@ -3,85 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Node.js · Fullstack Engineer Study Guide</title>
+  <title>Fullstack Engineer · Study Guide</title>
   <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body data-page="section" data-section="node">
   <main class="app-shell">
-    <a class="page-home" href="../index.html">← Todas las secciones</a>
-    <header class="hero">
-      <div>
-        <div class="kicker">Preparación entrevista técnica</div>
-        <h1>Node.js</h1>
-        <p>7 preguntas para practicar. Responde en voz alta antes de abrir cada respuesta.</p>
+    <a class="page-home" id="page-home" href="../index.html"></a>
+    <header class="site-header">
+      <div class="language-switcher" role="group" aria-label="Idioma">
+        <button type="button" data-language="es">ES</button>
+        <button type="button" data-language="en">EN</button>
       </div>
-      <aside class="progress-box">
-        <strong>2 / 8</strong>
-        <span>Sección actual</span>
-        <div class="progress-bar"><div class="progress-fill" style="width: 25%"></div></div>
-      </aside>
+      <div class="hero" id="hero"></div>
     </header>
-    <nav class="stepper" aria-label="Secciones de estudio">
-    <a class="step" href="../typescript/index.html">
-      <span class="step-index">1</span>
-      <span class="step-icon">TS</span>
-      <span class="step-label">TypeScript</span>
-    </a>
-    <a class="step active" href="../node/index.html" aria-current="page">
-      <span class="step-index">2</span>
-      <span class="step-icon">JS</span>
-      <span class="step-label">Node.js</span>
-    </a>
-    <a class="step" href="../react/index.html">
-      <span class="step-index">3</span>
-      <span class="step-icon">⚛</span>
-      <span class="step-label">React 18+</span>
-    </a>
-    <a class="step" href="../aws-serverless/index.html">
-      <span class="step-index">4</span>
-      <span class="step-icon">AWS</span>
-      <span class="step-label">AWS Serverless</span>
-    </a>
-    <a class="step" href="../arquitectura/index.html">
-      <span class="step-index">5</span>
-      <span class="step-icon">◎</span>
-      <span class="step-label">Arquitectura</span>
-    </a>
-    <a class="step" href="../ia-y-agentes/index.html">
-      <span class="step-index">6</span>
-      <span class="step-icon">AI</span>
-      <span class="step-label">IA y Agentes</span>
-    </a>
-    <a class="step" href="../testing-y-seguridad/index.html">
-      <span class="step-index">7</span>
-      <span class="step-icon">✓</span>
-      <span class="step-label">Testing y Seguridad</span>
-    </a>
-    <a class="step" href="../situacionales/index.html">
-      <span class="step-index">8</span>
-      <span class="step-icon">★</span>
-      <span class="step-label">Situacionales</span>
-    </a></nav>
+    <nav class="stepper" id="stepper"></nav>
     <div class="main-card">
-      <section class="step-panel active" data-panel="1"><div class="section-header"><span class="eyebrow">Sección 2 de 8</span><h2>Node.js</h2><p>7 preguntas para practicar</p></div><div class="qa-list"><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">21</span><span class="question-text">¿Qué significa que Node.js tenga un modelo de ejecución basado en un event loop?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Node.js ejecuta JavaScript principalmente en un solo hilo. El *event loop* coordina operaciones asíncronas como red, archivos, timers y callbacks.</p><p>Mientras una operación de entrada/salida espera, Node puede atender otras solicitudes. Esto lo hace eficiente para aplicaciones con mucho I/O, aunque no necesariamente para trabajo intensivo de CPU.</p><pre><code>console.log("1");
-setTimeout(() =&gt; console.log("3: timer"), 0);
-Promise.resolve().then(() =&gt; console.log("2: microtask"));
-// salida: 1, 2, 3</code></pre></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">22</span><span class="question-text">¿Qué operaciones pueden bloquear el event loop de Node.js?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Por ejemplo: cálculos intensivos, procesamiento pesado de imágenes, compresión grande, parsing de archivos enormes de manera síncrona, métodos como <code>readFileSync</code> y expresiones regulares muy costosas.</p><p>Para evitarlo se pueden utilizar APIs asíncronas, Worker Threads, procesamiento por lotes, colas o servicios especializados.</p><pre><code>// Bloquea el event loop
-for (let i = 0; i &lt; 1_000_000_000; i++) {}
-
-// Las APIs asíncronas permiten atender otras solicitudes
-const file = await fs.promises.readFile("report.csv");</code></pre></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">23</span><span class="question-text">¿Cuál es la diferencia entre Promise.all, Promise.allSettled y la ejecución secuencial?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p><code>Promise.all</code> ejecuta operaciones concurrentemente, pero falla cuando una de ellas falla.</p><pre><code>const results = await Promise.all([ getUser(), getPermissions()
-]);</code></pre><p><code>Promise.allSettled</code> espera todas las operaciones y devuelve el resultado individual de cada una. La ejecución secuencial es apropiada cuando cada operación depende de la anterior o cuando hay que limitar la concurrencia.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">24</span><span class="question-text">¿Cómo manejarías errores de manera centralizada en una API de Node.js?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Crearía errores tipados y un middleware global.</p><pre><code>class AppError extends Error { constructor( public readonly statusCode: number, message: string, public readonly code: string ) { super(message); }
-}</code></pre><p>El middleware transformaría esos errores en respuestas consistentes y registraría los errores inesperados sin exponer información sensible.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">25</span><span class="question-text">¿Cómo estructurarías un backend grande en TypeScript para que sea mantenible?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Separaría responsabilidades por capas:</p><pre><code>src/ domain/ application/ infrastructure/ interfaces/ shared/</code></pre><ul><li>`domain`: entidades y reglas de negocio.</li><li>`application`: casos de uso.</li><li>`infrastructure`: DynamoDB, S3, proveedores de IA.</li><li>`interfaces`: controladores HTTP o consumidores SQS.</li><li>`shared`: logging, configuración y errores.</li></ul><p>La lógica de negocio no debería depender directamente de AWS o del framework HTTP.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">26</span><span class="question-text">¿Qué beneficios tendría utilizar programación funcional en el backend?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>Funciones pequeñas y predecibles, menos mutación de estado, mayor facilidad para probar, composición de operaciones y menor acoplamiento.</p><pre><code>const calculateScore = (answers: Answer[]): number =&gt; answers.reduce((total, answer) =&gt; total + answer.score, 0);</code></pre><p>No significa eliminar completamente las clases, sino favorecer funciones puras para las reglas de negocio.</p></div></div></article><article class="qa-card"><button class="accordion-trigger" aria-expanded="false"><span class="question-number">27</span><span class="question-text">¿Cómo implementarías idempotencia en un endpoint?</span><span class="chevron">⌄</span></button><div class="accordion-panel"><div class="answer"><p>El cliente enviaría una <code>idempotency-key</code>. Antes de procesar, el backend comprobaría si esa clave ya fue utilizada.</p><pre><code>Idempotency key ↓
-Consultar DynamoDB ↓
-Existe → retornar resultado anterior
-No existe → procesar y almacenar resultado</code></pre><p>Esto evita duplicar pagos, reportes o tareas por reintentos de red.</p></div></div></article></div></section>
+      <section class="step-panel active" id="section-content"></section>
     </div>
-    <div class="controls">
-      <a class="nav-btn" href="../typescript/index.html">← TypeScript</a>
-      <a class="nav-btn primary" href="../react/index.html">React 18+ →</a>
-    </div>
+    <div class="controls" id="controls"></div>
   </main>
+  <script src="../data/es.js"></script>
+  <script src="../data/en.js"></script>
   <script src="../script.js"></script>
 </body>
 </html>

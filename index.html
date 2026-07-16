@@ -3,73 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Entrevista Técnica Fullstack Engineer</title>
+  <title>Fullstack Engineer · Study Guide</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-page="home">
   <main class="app-shell">
-    <header class="hero">
-      <div>
-        <div class="kicker">Preparación entrevista técnica</div>
-        <h1>Fullstack Engineer · Study Guide</h1>
-        <p>Elige una sección para practicar sus preguntas y respuestas.</p>
+    <header class="site-header">
+      <div class="language-switcher" role="group" aria-label="Idioma">
+        <button type="button" data-language="es">ES</button>
+        <button type="button" data-language="en">EN</button>
       </div>
-      <aside class="progress-box">
-        <strong>8</strong>
-        <span>Secciones de estudio</span>
-      </aside>
+      <div class="hero" id="hero"></div>
     </header>
     <div class="main-card">
-      <section class="step-panel active">
-        <div class="section-header">
-          <span class="eyebrow">Guía de estudio</span>
-          <h2>Temas</h2>
-          <p>Selecciona por dónde quieres comenzar</p>
-        </div>
-        <div class="topic-grid">
-          <a class="topic-card" href="typescript/index.html">
-            <span class="step-icon">TS</span>
-            <strong>TypeScript</strong>
-            <span>20 preguntas para practicar</span>
-          </a>
-          <a class="topic-card" href="node/index.html">
-            <span class="step-icon">JS</span>
-            <strong>Node.js</strong>
-            <span>7 preguntas para practicar</span>
-          </a>
-          <a class="topic-card" href="react/index.html">
-            <span class="step-icon">⚛</span>
-            <strong>React 18+</strong>
-            <span>8 preguntas para practicar</span>
-          </a>
-          <a class="topic-card" href="aws-serverless/index.html">
-            <span class="step-icon">AWS</span>
-            <strong>AWS Serverless</strong>
-            <span>12 preguntas para practicar</span>
-          </a>
-          <a class="topic-card" href="arquitectura/index.html">
-            <span class="step-icon">◎</span>
-            <strong>Arquitectura</strong>
-            <span>8 preguntas para practicar</span>
-          </a>
-          <a class="topic-card" href="ia-y-agentes/index.html">
-            <span class="step-icon">AI</span>
-            <strong>IA y Agentes</strong>
-            <span>11 preguntas para practicar</span>
-          </a>
-          <a class="topic-card" href="testing-y-seguridad/index.html">
-            <span class="step-icon">✓</span>
-            <strong>Testing y Seguridad</strong>
-            <span>6 preguntas para practicar</span>
-          </a>
-          <a class="topic-card" href="situacionales/index.html">
-            <span class="step-icon">★</span>
-            <strong>Situacionales</strong>
-            <span>7 preguntas para practicar</span>
-          </a>
-        </div>
-      </section>
+      <section class="step-panel active" id="home-content"></section>
     </div>
   </main>
+  <script src="data/es.js"></script>
+  <script src="data/en.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
